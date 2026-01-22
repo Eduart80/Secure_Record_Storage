@@ -1,0 +1,45 @@
+create user A//
+  "success": true,
+    "data": {
+        "username": "User_A",
+        "email": "test@test.com",
+        "password": "$2b$10$JRHOwo02yGd27V1rct2.cu2BlHXtxeeS3dOGHS8rHUbcBbIHaT.4.",
+        "_id": "697126ec25ead2780fc2b001",
+        "__v": 0
+
+Login user A//
+  "success": true,
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiVXNlcl9BIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiX2lkIjoiNjk3MTI2ZWMyNWVhZDI3ODBmYzJiMDAxIn0sImlhdCI6MTc2OTAyMzI3NywiZXhwIjoxNzY5MDMwNDc3fQ.eCV5PtOShKrncyIa5U-azrtbInnyDM5TQVbXyYnHd3o",
+    "user": {
+        "username": "User_A",
+        "email": "test@test.com"
+
+create note from user A//
+  "title": "Test A Note",
+    "content": "This is a test note from User A.",
+    "user": "697126ec25ead2780fc2b001",
+    "_id": "6971276825ead2780fc2b005",
+    "createdAt": "2026-01-21T19:22:16.969Z",
+    "updatedAt": "2026-01-21T19:22:16.969Z",
+    "__v": 0
+}
+
+Testing user B to access user A//
+creating user B//
+  "success": true,
+    "data": {
+        "username": "User_B",
+        "email": "test2@test.com",
+        "password": "$2b$10$YCmdvs9BT1ebPUnh1OXjK.HLdVs4rgP3nvKDvjqWSt24AYlOZuiS2",
+        "_id": "697127f525ead2780fc2b008",
+        "__v": 0
+    }
+Loging user B//
+ "success": true,
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJuYW1lIjoiVXNlcl9CIiwiZW1haWwiOiJ0ZXN0MkB0ZXN0LmNvbSIsIl9pZCI6IjY5NzEyN2Y1MjVlYWQyNzgwZmMyYjAwOCJ9LCJpYXQiOjE3NjkwMjM2NjcsImV4cCI6MTc2OTAzMDg2N30.QSvLdEuIO3e2kvAfRRwEcKM-7_X0cBH90d0IEkb9lGE",
+    "user": {
+        "username": "User_B",
+        "email": "test2@test.com"
+    }    

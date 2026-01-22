@@ -13,6 +13,10 @@ app.use(express.json())
 const userRouter = require('./routes/userRouter')
 app.use(userRouter)
 
+// Register notesRouter
+const notesRouter = require('./routes/notes');
+app.use('/api/notes', notesRouter);
+
 
 app.listen( PORT, ()=>{console.log(`Server started on https://localhost:${PORT}`);
 })

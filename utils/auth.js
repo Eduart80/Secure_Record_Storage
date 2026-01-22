@@ -4,15 +4,18 @@ const secret = process.env.JWT_SECRET;
 const expiration = '2h';
 
 function authMiddleware(req, res, next) {
-  // Allows token to be sent via req.body, req.query, or headers
-  let token = req.body.token || req.query.token || req.headers.authorization;
+  let token = (req.body && req.body.token) || (req.query && req.query.token) || req.headers.authorization;
 
-  // We split the token string into an array and return actual token
-  if (req.headers.authorization) {
-    token = token.split(' ').pop().trim();
+  if (req.headers.authorization && typeof req.headers.authorization === 'string') {
+    const parts = req.headers.authorization.split(' ');
+    if (parts.length === 2 && parts[0] === 'Bearer') {
+      token = parts[1];
+    } else {
+      token = req.headers.authorization;
+    }
   }
 
-  if (!token) {
+  if (!token || typeof token !== 'string') {
     return res.status(401).json({ message: 'No token provided, authorization denied.' });
   }
 
@@ -20,7 +23,7 @@ function authMiddleware(req, res, next) {
     const { data } = jwt.verify(token, secret, { maxAge: expiration });
     req.user = data;
     next();
-  } catch {
+  } catch (err) {
     return res.status(401).json({ message: 'Invalid token, authorization denied.' });
   }
 }
